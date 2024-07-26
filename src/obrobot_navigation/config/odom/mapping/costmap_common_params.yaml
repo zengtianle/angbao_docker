@@ -1,0 +1,49 @@
+
+#footprint: [[-0.2, -0.205], [-0.2, 0.205], [0.256, 0.205], [0.324, 0.105], [0.324, -0.105], [0.256, -0.205]]  #OB_robot #zark
+
+# robot_radius: 0.28 #0.28 #0.23
+
+
+obstacle_layer:
+  enabled: true
+  max_obstacle_height: 1.2
+  min_obstacle_height: 0.0
+
+  obstacle_range: 4.0 #3.0 #2.5 #The maximum range in meters at which to insert obstacles into the costmap using sensor data. 
+  raytrace_range: 8.0 #3.0 #The maximum range in meters at which to raytrace out obstacles from the map using sensor data. 
+
+  combination_method: 0 #max(1) overwrite(0)
+  observation_sources: laser_scan_sensor
+  track_unknown_space: true
+ 
+  origin_z: 0.0
+  z_resolution: 0.1
+  z_voxels: 10
+  unknown_threshold: 15
+  mark_threshold: 0
+  publish_voxel_map: false 
+  footprint_clearing_enabled: true
+
+
+  laser_scan_sensor:
+    data_type: LaserScan
+    topic: /scan
+    marking: true
+    clearing: true
+    expected_update_rate: 0
+    observation_persistence: 0.0
+
+
+inflation_layer_global:
+  enabled:              true
+  cost_scaling_factor:  8.0 #4.0 #8.0 #5.0 #exponential rate at which the obstacle cost drops off (default: 10)
+  inflation_radius:     0.8 #0.6 #0.33
+
+inflation_layer_local:
+  enabled:              true
+  cost_scaling_factor:  12 #4.0 #8.0 #5.0 #exponential rate at which the obstacle cost drops off (default: 10)
+  inflation_radius:     1.0 #0.6 #0.33
+
+static_layer:
+  enabled:              true
+  map_topic:            "/map"

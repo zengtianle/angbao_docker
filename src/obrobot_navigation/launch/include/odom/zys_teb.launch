@@ -1,0 +1,22 @@
+<launch>
+	<node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+  	  	<rosparam file="$(find obrobot_navigation)/config/odom/zys/costmap_common_params.yaml" command="load" ns="global_costmap" />
+  	 	<rosparam file="$(find obrobot_navigation)/config/odom/zys/costmap_common_params.yaml" command="load" ns="local_costmap" />
+  		<rosparam file="$(find obrobot_navigation)/config/odom/zys/local_costmap_params.yaml" command="load" />
+  		<rosparam file="$(find obrobot_navigation)/config/odom/zys/global_costmap_params.yaml" command="load" />
+  		<rosparam file="$(find obrobot_navigation)/config/odom/zys/teb_local_planner_params.yaml" command="load" />
+		<rosparam file="$(find obrobot_navigation)/config/odom/zys/move_base_params.yaml" command="load" />
+<!-- Here we load our costmap conversion settings -->
+		<rosparam file="$(find obrobot_navigation)/config/odom/zys/costmap_converter_params.yaml" command="load" /> 
+
+		<param name="base_global_planner" value="global_planner/GlobalPlanner" />
+
+		     <param name="planner_frequency" value="5.0" />
+		     <param name="planner_patience" value="10.0" />
+
+		<param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS" />
+		<param name="controller_frequency" value="15.0" />
+		<param name="controller_patience" value="25.0" />
+	</node>
+
+</launch>

@@ -1,0 +1,16 @@
+<launch>
+    <arg name="pkgname" default="ob_web" />
+    <node name="ob_callback" pkg="$(arg pkgname)" type="ob_callback" output="screen">
+        <param name="host_path" type="string" value="/home/courierlo/" />
+        <param name="map_path" type="string" value=".ob/map/" />
+        <param name="pose_path" type="string" value=".ob/pos/" />
+        <param name="cfg_path" type="string" value=".ob/setting/" />
+        <param name="occupied_thresh" type="double" value="0.65" />
+        <param name="free_thresh" type="double" value="0.196" />
+        <param name="name_pose_json" type="string" value="OB_pose.json" />
+        <param name="name_cfg_json" type="string" value="external_cfg.json" />
+        <param name="name_speed_json" type="string" value="limitConfig.json" />
+        <param name="stop_script" type="string" value="/home/ob/.ob/autostart/ros_stop.sh" />
+        <param name="upgrade_script" type="string" value="/home/ob/ws/src/ob_web/upgrade/upgrade.sh" />
+    </node>
+</launch>

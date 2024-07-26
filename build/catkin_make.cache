@@ -1,0 +1,2 @@
+costmap_2d:ltme_node-master:map_server:obrobot_description:obrobot_driver:obrobot_navigation:obrobot_rviz:obrobot_tools:obrobot_web:usb_cam:ydlidar_ros-G4:zys_localization
+-DCATKIN_DEVEL_PREFIX=/home/courierlo/autoslam_gm/devel -DCMAKE_INSTALL_PREFIX=/home/courierlo/autoslam_gm/install -G Unix Makefiles

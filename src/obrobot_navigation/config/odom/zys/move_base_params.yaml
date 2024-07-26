@@ -1,0 +1,14 @@
+max_planning_retries: 60 #-1 #1-zark #-1-travis #1  20=5s
+
+recovery_behavior_enabled: false #false-travis #true 
+
+GlobalPlanner:                                  # Also see: http://wiki.ros.org/global_planner
+  old_navfn_behavior: false                     # Exactly mirror behavior of navfn, use defaults for other boolean parameters, default false
+  use_quadratic: true                           # Use the quadratic approximation of the potential. Otherwise, use a simpler calculation, default true
+  use_dijkstra: true                            # Use dijkstra's algorithm. Otherwise, A*, default true
+  use_grid_path: false                          # Create a path that follows the grid boundaries. Otherwise, use a gradient descent method, default false
+ # If goal in obstacle, plan to the closest point in radius default_tolerance, default 0.0
+
+#  lethal_cost: 240 #254 #230
+#  neutral_cost: 66 #40 #140
+#  cost_factor: 0.55 #0.2 #3.0  

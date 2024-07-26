@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!--坐标初始化-->
+  <arg name="initial_pose_x" default="0.0"/> 
+  <arg name="initial_pose_y" default="0.0"/> 
+  <arg name="initial_pose_a" default="0.0"/>
+  <!--地图数据初始化-->
+	<node name="map_server" pkg="map_server" type="map_server" output="screen" respawn="false" />
+  <!--定位初始化-->
+  <include file="$(find obrobot_navigation)/launch/include/odom/amcl.launch">
+  <!--<include file="$(find obrobot_navigation)/launch/include/odom/zys_amcl.launch">-->
+    <arg name="initial_pose_x" value="$(arg initial_pose_x)"/>
+    <arg name="initial_pose_y" value="$(arg initial_pose_y)"/>
+    <arg name="initial_pose_a" value="$(arg initial_pose_a)"/>
+    <remap from="map" ato="map_amcl"/>
+  </include>
+
+  <!--底层驱动初始化-->
+  <include file="$(find obrobot_driver)/launch/driver_web_tool.launch"/>
+
+  <!--激光雷达初始化-->
+  <!--<include file="$(find ltme_node)/launch/ltme02a.launch"/>-->
+  <include file="$(find ydlidar)/launch/lidar.launch"/>
+
+  <!--导航路径规划初始-->
+  <!--<include file="$(find obrobot_navigation)/launch/include/odom/teb_move_base_nav.launch"/>-->
+  <include file="$(find obrobot_navigation)/launch/include/odom/zys_teb.launch"/>
+  
+  <!--记录initialpose点-->
+  <!--<node name="get_initialpose" pkg="zys_localization" type="get_initialpose" output="screen" respawn="false" />-->
+
+  <!--导航点增删查改操作服务-->
+  <node name="ob_pose_service" pkg="obrobot_navigation" type="ob_posemanage_service_yimu.py" output="screen" respawn="false" />
+
+  <!--定位匹配-->
+  <include file="$(find zys_localization)/launch/zys_localization.launch"/>
+
+  <!--开机重定位，该文件要放到所有其他用到地图服务的节点前启动-->
+  <node name="ob_relocation" pkg="obrobot_navigation" type="ob_relocation_web_tool.py" output="screen" respawn="false" />
+  
+  <!--导航-->
+  <node name="ob_navigation" pkg="obrobot_navigation" type="ob_nav.py" output="screen" respawn="false" />
+
+  <!--自动充电-->
+  <node name="ob_recharge" pkg="obrobot_navigation" type="ob_recharge.py" output="screen" respawn="false" />
+
+  <!--头部舵机,迎宾机器人才开启-->
+  <!--<node name="ob_servo_control" pkg="obrobot_navigation" type="ob_servo_control.py" output="screen" respawn="false" />-->
+
+  <!--地图重定位预处理,批处理生成多张多层分辨率地图-->
+  <include file="$(find zys_localization)/launch/zys_processingMaps.launch"/>
+
+  <!--与安卓连接-->
+  <include file="$(find rosbridge_server)/launch/rosbridge_websocket.launch"/>
+  
+  
+</launch>
+
+
+

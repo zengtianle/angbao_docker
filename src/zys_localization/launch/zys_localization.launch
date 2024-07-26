@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  <node pkg="zys_localization" type="zys_localization_node" name="zys_localization_node" output="screen">
+    <param name="/use_sime_time" value="false"/>
+
+    <param name="matching_size" value="1" type="int"/>
+    <param name="cloud_range_max" value="49.0"/>
+    <param name="laser_sigma_hit" value="0.05"/>
+		<param name="laser_z_rand" value="0.05"/>
+		<param name="laser_z_hit" value="0.95"/>
+    <!-- <param name="score" value="0.8"/>
+    <param name="score_one" value="0.95"/> -->
+    <param name="getmap" value="false"/>
+
+
+    <param name="output_twist_topic_name_" value="/cmd_vel" />
+    <param name="sub_scan_topic_name_" value="/scan" />
+    <param name="sub_imu_topic_name_" value="/imu_data" />
+    <param name="sub_tf_tree_name_" value="base_footprint" />
+    <remap from="map" to="map_amcl"/>
+  </node>
+
+</launch>		

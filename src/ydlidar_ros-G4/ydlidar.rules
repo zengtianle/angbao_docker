@@ -1,0 +1,1 @@
+KERNEL=="ttyUSB*", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5740", MODE:="0777", SYMLINK+="eaiydlidar"

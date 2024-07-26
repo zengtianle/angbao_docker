@@ -1,0 +1,15 @@
+
+<launch>
+
+  <include file="$(find obrobot_driver)/launch/driver_web_tool.launch"/>
+  <include file="$(find ydlidar)/launch/lidar.launch"/>
+  <!--<include file="$(find ltme_node)/launch/ltme02a.launch"/>-->
+
+  <include file="$(find obrobot_description)/launch/obrobot_description.launch"/>
+  <include file="$(find cartographer_ros)/launch/islam_2d_online.launch"/>
+
+
+</launch>
+
+
+

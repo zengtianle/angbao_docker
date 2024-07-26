@@ -1,0 +1,17 @@
+
+<launch>
+
+  <!--include file="$(find obrobot_driver)/launch/driver_web_tool.launch"/>-->
+  <!--<include file="$(find sc_mini)/launch/start.launch"/>-->
+  <!--include file="$(find ydlidar)/launch/lidar.launch"/>-->
+  <!--<include file="$(find ltme_node)/launch/ltme02a.launch"/>-->
+
+  <!--include file="$(find obrobot_description)/launch/obrobot_description.launch"/>-->
+  <!--include file="$(find obrobot_navigation)/launch/include/odom/gmapping_base.launch"/>-->
+  <include file="$(find obrobot_navigation)/launch/include/odom/zys_gmapping.launch"/>
+
+
+</launch>
+
+
+

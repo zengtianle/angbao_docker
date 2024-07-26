@@ -1,0 +1,21 @@
+local_costmap:
+
+   global_frame: /odom
+   #global_frame: /odom_combined
+   robot_base_frame: /base_footprint
+   update_frequency: 5.0 #5.0-travis #3.0
+   publish_frequency: 2.0 #2.0-travis #1.0
+   static_map: false
+   rolling_window: true
+   width: 4.0 #6.0 #8.0-travis #3.0 # 4 zark
+   height: 4.0 #6.0 #8.0-travis #3.0 #4 zark
+   resolution: 0.025 #default:0.05 zark:0.02
+   transform_tolerance: 0.5 #0.5-travis #1.0
+   map_type: costmap
+   robot_radius: 0.27 #0.33 #0.33 #0.28 #0.28 #0.23
+
+   plugins:
+   - {name: static_layer,        type: "costmap_2d::StaticLayer"}
+   - {name: obstacle_layer,      type: "costmap_2d::VoxelLayer"}
+   - {name: inflation_layer_local,     type: "costmap_2d::InflationLayer"}
+  #  - {name: sonar_layer,         type: "range_sensor_layer::RangeSensorLayer"}

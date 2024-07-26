@@ -1,0 +1,14 @@
+<launch>
+
+  <!-- Map server -->
+  <arg name="map_file" default="$(env HOME)/.ob/map/ob_autoslam.yaml"/>
+  <node name="vitual_wall" pkg="map_server" type="map_server" args="$(arg map_file)" >
+    <remap from="map"                      to="virtual_wall"/>
+    <remap from="map_metadata"             to="virtual_wall_metadata"/>
+  </node>
+
+  <node name="static_map" pkg="map_server" type="map_server" args="$(arg map_file)" >
+
+  </node>
+
+</launch>

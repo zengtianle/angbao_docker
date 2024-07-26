@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+
+<launch>
+	  <node name="rviz" pkg="rviz" type="rviz">
+      <remap from="initialpose" to="initial_pose"/>
+    </node>
+    </launch>		

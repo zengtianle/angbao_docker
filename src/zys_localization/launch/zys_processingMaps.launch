@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  <node pkg="zys_localization" type="processingMaps" name="processingMaps" output="screen">
+
+    <param name="laser_sigma_hit" value="0.05"/>
+    <param name="laser_z_rand" value="0.05"/>
+    <param name="laser_z_hit" value="0.95"/>
+    <param name="processing_size" value="7"/>
+    <!--<param name="file_path" value="/home/zhang/teb_ws/src/robot_launch/worlds/LIKTO地图和导航点数据/" />-->
+  </node>
+
+</launch>		

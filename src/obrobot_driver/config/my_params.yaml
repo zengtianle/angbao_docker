@@ -1,0 +1,33 @@
+port: /dev/ttyUSB0
+#port: /dev/ob_car  #底层通信板的串口
+#port2: /dev/ob_car2 #上面通信板的串口
+
+baud: 230400 #115200  #通信的波特率
+timeout: 0.1
+rate: 30 #50 #30   #通信的频率
+# sensorstate_rate: 10
+
+useImu: False
+useSonar: False
+use_base_controller: True
+used_for_greetguest: False #True #False #设置是否迎宾的底层，True则为迎宾机器人，False则为派送机器人
+#base_controller_rate: 30 #10
+slam_project_version: 20210508
+
+# For a robot that uses base_footprint, change base_frame to base_footprint
+base_frame: base_footprint #小车中点的坐标系名称
+
+# === Robot drivetrain parameters
+wheel_diameter: 0.17  #轮子的直径
+wheel_track: 0.35 #0.4 #0.35 #轮子的间距
+encoder_resolution: 4096  #轮子转1圈编码数目
+
+gear_reduction: 1.0
+motors_reversed: False
+
+# === PID parameters
+Kp: 50
+Kd: 20
+Ki: 0
+Ko: 50
+accel_limit: 3.0 #1.0

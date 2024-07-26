@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<launch>
+
+
+  <!--<arg name="map_file" default="$(env HOME)/.ob/map/ob_autoslam.yaml"/>-->
+  <arg name="map_file" default="$(env HOME)/.ob/map/ob_autoslam.yaml"/>
+
+  <!-- Map server -->
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+
+  <!-- rqt_console -->
+  <node name="rqt_console" pkg="rqt_console" type="rqt_console" />
+
+  <!-- rviz -->
+  <node name="rviz" pkg="rviz" type="rviz" />
+
+</launch>
+
+
+

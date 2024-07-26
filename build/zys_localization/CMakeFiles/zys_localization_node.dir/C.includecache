@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/courierlo/autoslam_gm/src/zys_localization/include/zys_localization/map.h
+stdint.h
+-
+
+/home/courierlo/autoslam_gm/src/zys_localization/src/map.c
+assert.h
+-
+math.h
+-
+stdlib.h
+-
+string.h
+-
+stdio.h
+-
+zys_localization/map.h
+/home/courierlo/autoslam_gm/src/zys_localization/src/zys_localization/map.h
+

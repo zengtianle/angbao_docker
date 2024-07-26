@@ -1,0 +1,50 @@
+ls /dev/video*
+roslaunch usb_cam usb_cam-test.launch 
+/home/ob/.ros/camera_info/head_camera.yaml
+rosrun camera_calibration cameracalibrator.py --size 8x5 --square 0.023 image:=/usb_cam/image_raw camera:=/usb_cam
+rosrun camera_calibration cameracalibrator.py --size 11x8 --square 0.025 image:=/usb_cam/image_raw camera:=/usb_cam
+
+
+//////////////////////////apriltag_ros//////////////////////////////////
+ob@obrobot:~/autoslam_gm$ catkin_make_isolated 
+ob@obrobot:~/autoslam_gm$ source ./devel_isolated/setup.bash 
+ob@obrobot:~/autoslam_gm$ roslaunch apriltag_ros continuous_detection.launch 
+ob@obrobot:~/autoslam_gm$ rostopic echo /tag_detections
+/home/ob/autoslam_gm/src/apriltag_ros/apriltag_ros/config/tags.yaml
+
+ 
+
+///////////////////////////ar_track_alvar/////////////////////////////////
+rosrun ar_track_alvar createMarker -s 10 2
+roslaunch ar_track_alvar ar_track_usb_cam_bundle.launch
+rostopic echo /ar_pose_marker
+
+opt/ros/kinetic/share/ar_track_alvar/launch/ar_track_usb_cam.launch
+<arg name="marker_size" default="4.5" />
+
+master tag must at first
+index0 for ID0
+/opt/ros/kinetic/share/ar_track_alvar/bundles/truthTableLeg.xml   all the tags
+/opt/ros/kinetic/share/ar_track_alvar/bundles/table_0_5.xml       only one big tag+small tag
+
+
+
+rosbag record -O data1 /ob_tag
+rostopic echo -b data1.bag -p /ob_tag > data1_tag.txt
+
+rosbag record -O data1 /ob_tag odom /yaw_angle
+rostopic echo -b data1.bag -p /ob_tag > data1_tag.txt
+rostopic echo -b data1.bag -p /odom > data1_odom.txt
+rostopic echo -b data1.bag -p /yaw_angle > data1_yaw.txt
+
+
+rostopic pub -1 /obrobot_move_set geometry_msgs/Pose "position:
+  x: 0.0
+  y: 10.0
+  z: -0.10
+orientation:
+  x: 0.20
+  y: 0.01
+  z: 0.30
+  w: 3.0" 
+
